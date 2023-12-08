@@ -1,0 +1,501 @@
+IMG.png { behavior: url("pngbehavior.htc"); }
+
+.screen {
+	background-color: white;
+   position:absolute;
+   top:0px;
+   left:0px;
+   border:3px ridge #eee;
+   padding:0px 5px 5px 5px;
+	display: none;
+}
+
+.screentitle {
+	background-color: #1d3d94;
+	height: 23px;
+	color: white;
+	font-size: 12px;
+	margin-bottom: 5px;
+	padding-left: 5px;
+	padding-top: 7px;
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+
+/* Note: to change background color of selectgrid, also need to change
+	".selectgrid tr background", which is a placeholder border
+	TODO: Figure out table-layout:fixed combined with colgroups to set
+		widths.
+*/
+.selectgrid {
+   border:1px inset black;
+   overflow:hidden;
+   white-space: nowrap;
+   -moz-user-focus: normal;
+   -moz-user-select: none;
+   background-color: white;
+   color: black;
+	overflow-y:scroll;
+	overflow:-moz-scrollbars-vertical;
+}
+
+.inactivescreen select { visibility: hidden; }
+.activescreen select { visibility: visible; }
+
+.inactivescreen .selectgrid {
+	overflow: hidden;
+	overflow-y:hidden;
+	padding-right: 20px;
+}
+
+.activescreen .selectgrid {
+	overflow-y:scroll;
+	overflow:-moz-scrollbars-vertical;
+	padding-right: 0px;
+}
+
+.selectgrid table {
+   border-collapse: separate;
+	table-layout: fixed;
+}
+
+.selectgrid tr {
+   cursor: pointer;
+   white-space: nowrap;
+   width:100%;
+   border: 1px dashed white;
+   margin: 0px;
+   padding-left: 2px;
+}
+
+.selectgrid td {
+	margin: 0px;
+   padding-left: 5px;
+   border-top: 1px solid transparent;
+   border-bottom: 1px solid transparent;
+   border-left: none;
+   overflow: hidden;
+}
+
+.selectgrid td.firstcolumn {
+   padding-left:3px;
+}
+
+.selectgrid td.lastcolumn {
+   padding-right:3px;
+}
+
+.selectgrid tr.selected td.lastcolumn {
+   padding-right:2px;
+   border-right: 1px solid black;
+}
+
+.selectgrid tr.selected td {
+   border-top: 1px solid black;
+   border-bottom: 1px solid black;
+}
+
+.selectgrid tr.selected td.firstcolumn {
+   border-left: 1px solid black;
+   padding-left:2px;
+}
+
+.selectgrid tr.selected {
+   background-color: #eee;
+   border: none;
+}
+
+.selectgrid th {
+	border-bottom: 1px solid black;
+}
+
+.scrollarea {
+	overflow-y: scroll;
+	overflow:-moz-scrollbars-vertical;
+	overflow-x: hidden;
+}
+
+.inactivescreen .scrollarea {
+	overflow-y: hidden;
+	overflow:hidden;
+}
+
+.activescreen .scrollarea {
+	overflow-y: scroll;
+	overflow:-moz-scrollbars-vertical;
+}
+
+#lfjs_modaldiv { 
+	-moz-opacity:0.6;
+	opacity: .6;
+	filter: alpha(opacity=60);
+	background-color: #ffffff;
+}
+
+.buttonbar {
+   width:100%;
+   text-align:center;
+   margin-top:5px;
+   margin-bottom:5px;
+}
+
+.button {
+   border:1px solid #a8a8a8;
+   cursor: pointer;
+   font-size:85%;
+   padding-left:5px;
+   padding-right:5px;
+   padding-top:2px;
+   padding-bottom:2px
+}
+
+
+
+.tabset {
+	position: relative;
+	overflow: hidden;
+	z-index: 5;
+}
+
+.tabcontainer {
+	position: relative;
+	noposition: expression("static");
+	padding-top: 4px;
+	z-index: 10;
+	top: 1px;
+	top: expression("0px");
+	overflow: hidden;
+	overflow-x: hidden;
+}
+
+
+.tab {
+	user-select: none;
+	-moz-user-select: none;
+	position: relative;
+	top: 0px;
+	text-align: center;
+	cursor: pointer;
+	background-color: white;
+	font-size: 18px;
+	padding: 0px 4px 0px 4px;
+	margin: 0px;
+	border: 1px black solid;
+	border-bottom: none;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+	border-radius-topleft: 8px;
+	border-radius-topright: 8px;
+}
+
+.tabnav {
+	position: relative;
+	z-index: 8;
+}
+.tabnav A {
+}
+
+.tab.tabinactive {
+}
+
+.tab.tabactive {
+	position: relative;
+	margin: 0px 1px 0px 0px;
+	font-weight: bold;
+	padding-bottom: 2px;
+	top: -1px;
+	z-index: 28;
+}
+
+.tab.tabhover {
+}
+
+.closetab {
+	position: relative;
+	font-size: 12px;
+	padding-left: 3px;
+	top: -6px;
+}
+.closetab A {
+
+}
+.tabcontents {
+	position: relative;
+	background-color: white;
+	overflow: auto;
+	border: 1px black outset;
+	top: 0px;
+	z-index: 2;
+}
+.showPrint {
+	display: none;
+}
+
+@media print {
+	.tabSet {
+		height: auto;
+	}
+	
+	.tabContainer {
+		display: none;
+	}
+	.tabInactive {
+		display: none;
+	}
+	
+	.tabActive {
+		display: none;
+	}
+	.steph1 {
+		display: none;
+	}
+	.showPrint {
+		display: block;
+		margin: 2px;
+	}
+	
+	.tabContent {
+		position: relative;
+		height: 100%;
+		overflow: visible;
+		top: 3px;
+		top: expression(document.all ? -2 : 2 + "px");
+		border: none;
+		padding: 4px;
+		background-color: #FFFFFF;
+		z-index: 2;
+	}
+}
+
+.multiupload {
+	noborder: 1px solid black;
+	cursor: pointer;
+}
+.multiupload .swfupload, SPAN .swfupload {
+	cursor: pointer;
+	position: absolute;
+	z-index: 2;
+}
+
+
+.lfjsbubble {
+	background: transparent;
+	overflow: visible;
+	display: none;
+	position: relative;
+	text-align: left;
+	font: normal 10px Helvetica, Arial, sans-serif;
+	z-index: 2900;
+}
+.lfjsbubble #lfjsbubbleclose {
+	margin: 0px;
+	position: absolute;
+	top: 18px;
+	right: 6px;
+	cursor: pointer;
+}
+.lfjsbubble .lfjsbubbletop {
+	background-image:url("./lfjsimages/bubble_top_left.png");
+	background-position:left 12px;
+	background-repeat:no-repeat;
+	float:left;
+	height:32px;
+	width:15px;
+}
+.lfjsbubble .lfjsbubbletopright {
+	background-image:url("./lfjsimages/bubble_top.png");
+	background-position:right 12px;
+	background-repeat:no-repeat;
+	height:32px;
+	margin-left:15px;
+}
+.lfjsbubble .lfjsbubblemainwrapper {
+	background:url("./lfjsimages/bubble_right.png") repeat-y scroll right top transparent;
+}
+.lfjsbubble .lfjsbubblemain {
+	background:url("./lfjsimages/bubble_left.png") repeat-y scroll left top transparent;
+	clear:left;
+	margin-right: 2px;
+}
+.lfjsbubble .lfjsbubblecontent {
+	overflow: hidden;
+	font-family:Verdana,Helvetica,sans-serif;
+	font-size:12px;
+	margin-top:0;
+	padding:0px 15px 5px;
+	background-color: white;
+	margin-left: 2px;
+}
+.lfjsbubble .lfjsbubblebottom {
+	background:url("./lfjsimages/bubble_bottom_left.png") no-repeat scroll left top transparent;
+	float:left;
+	height:32px;
+	width:15px;
+}
+.lfjsbubble .lfjsbubblebottomright {
+	background:url("./lfjsimages/bubble_bottom.png") no-repeat scroll right top transparent;
+	height:32px;
+	margin-left:15px;
+}
+.lfjsbubble .lfjsbubbletail {
+	background:url("./lfjsimages/bubble_tail.png") no-repeat scroll right top transparent;
+	position: absolute;
+	bottom: 0px;
+	top: auto;
+	right: 40px;
+	height: 25px;
+	width: 28px;
+}
+.lfjsbubble .lfjsbubbletail.left {
+	background:url("./lfjsimages/bubble_tail_left.png") no-repeat scroll right top transparent;
+	bottom: 0px;
+	top: auto;
+}
+.lfjsbubble .lfjsbubbletail.top {
+	background:url("./lfjsimages/bubble_tail_top.png") no-repeat scroll right top transparent;
+	bottom: auto;
+	top: 0px;
+}
+.lfjsbubble .lfjsbubbletail.top.left {
+	background:url("./lfjsimages/bubble_tail_top_left.png") no-repeat scroll right top transparent;
+	bottom: auto;
+	top: 0px;
+}.seligo-container {
+	display: inline-block;
+	position: relative;
+}
+
+.seligo-cover {
+	position: absolute;
+}
+
+.seligo-cover[tabindex] {
+	cursor: pointer;
+}
+
+.seligo-drop {
+	background-color: #fff;
+	border: 1px solid #c0c0c0;
+	border-radius: 3px;
+	box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	-ms-box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	display: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	padding: 5px;
+	position: absolute;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	z-index: 9999;
+}
+
+.seligo-current {
+	padding-right: 18px;
+}
+
+input.seligo-search {
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 1px 1px #eee;
+	-moz-box-shadow: inset 0 1px 1px #eee;
+	box-shadow: inset 0 1px 1px #eee;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	height: auto;
+	line-height: normal;
+	margin: 6px 0;
+	padding: 4px;
+	width: 100%;
+}
+
+.seligo-options {
+	border-bottom: 1px solid #dfdfdf;
+	border-top: 1px solid #dfdfdf;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	max-height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	position: relative;
+}
+
+.seligo-options:empty:before {
+	background-color: #f1f1f1;
+	color: #666;
+	content: 'Nothing found';
+	display: block;
+	padding: 2px 0;
+	text-align: center;
+}
+
+.seligo-options > div {
+	cursor: pointer;
+	padding: 3px 6px;
+	white-space: nowrap;
+}
+
+.seligo-options > div.selected {
+	background-color: #3875d7;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
+	background-image: -webkit-linear-gradient(#3875d7 20%, #2a62bc 90%);
+	background-image: -moz-linear-gradient(#3875d7 20%, #2a62bc 90%);
+	background-image: -o-linear-gradient(#3875d7 20%, #2a62bc 90%);
+	background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);
+	color: #fff;
+}
+
+.seligo-remove {
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBmaWxsPSIjNjY2Ij4KPHBvbHlnb24gaWQ9IngtbWFyay1pY29uIiBwb2ludHM9IjQzOC4zOTMsMzc0LjU5NSAzMTkuNzU3LDI1NS45NzcgNDM4LjM3OCwxMzcuMzQ4IDM3NC41OTUsNzMuNjA3IDI1NS45OTUsMTkyLjIyNSAxMzcuMzc1LDczLjYyMiA3My42MDcsMTM3LjM1MiAxOTIuMjQ2LDI1NS45ODMgNzMuNjIyLDM3NC42MjUgMTM3LjM1Miw0MzguMzkzIDI1Ni4wMDIsMzE5LjczNCAzNzQuNjUyLDQzOC4zNzggIi8+Cjwvc3ZnPg==);
+	background-size: 15px 15px;
+	cursor: pointer;
+	display: none;
+	height: 15px;
+	position: absolute;
+	right: 4px;
+	width: 15px;
+}
+
+.seligo-drop[data-mode="xhr"] .seligo-remove {
+	display: block;
+}
+
+.seligo-drop[data-mode="xhr"][data-current=""] .seligo-remove {
+	display: none;
+}
+
+.seligo-xhr-search:hover {
+	text-decoration: none;
+}
+
+.seligo-drop[data-mode="xhr"] input.seligo-search {
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPiA8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGZpbGw9IiNhYWFhYWEiPiA8cGF0aCBpZD0ibWFnbmlmaWVyLTUtaWNvbiIgZD0iTTQ2MC40ODgsMzg3LjE2NmwtMTE3LjA5LTExNy4wOUMzOTIuMDUxLDE2OS4xNzUsMzE4LjUwNCw1MCwyMDQuOTU5LDUwIGMtODQuNjg2LDAtMTUzLjU4NCw2OC44OTgtMTUzLjU4NCwxNTMuNTg1YzAsMTExLjcyMywxMTUuNzAzLDE4NS4zNzUsMjE2LjMwOCwxNDAuMTg3bDExOC4xLDExOC4wOTcgQzQxOS4zNzMsNDY0LjY3Miw0NjMuMzg3LDQyMS45MjIsNDYwLjQ4OCwzODcuMTY2eiBNMjA0Ljk1OSwzMDYuMTI2Yy01Ni41MzcsMC0xMDIuNTM1LTQ1Ljk5OS0xMDIuNTM1LTEwMi41NDEgYzAtNTYuNTM5LDQ1Ljk5OC0xMDIuNTM4LDEwMi41MzUtMTAyLjUzOGM1Ni41NDEsMCwxMDIuNTQxLDQ1Ljk5OSwxMDIuNTQxLDEwMi41MzhDMzA3LjUsMjYwLjEyNywyNjEuNSwzMDYuMTI2LDIwNC45NTksMzA2LjEyNnoiIC8+IDwvc3ZnPg==);
+	background-position: calc(100% - 4px) 50%;
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+}
+
+.seligo-drop[data-mode="xhr"][data-loading="1"] input.seligo-search {
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+IDxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDMyIDMyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxnPiA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+IDxnPjxyZWN0IGhlaWdodD0iOCIgd2lkdGg9IjIuNSIgZmlsbD0iI0FBQSIgeD0iMTQuNzUiLz48L2c+IDxnPjxyZWN0IGhlaWdodD0iMi41IiB3aWR0aD0iOCIgZmlsbD0iI0FBQSIgdHJhbnNmb3JtPSJtYXRyaXgoMC41LDAuODY2LC0wLjg2NiwwLjUsOS44NTY0LC01Ljg1NjQpICIgeT0iNC4zNTgiIHg9IjYiLz48L2c+IDxnPjxyZWN0IGhlaWdodD0iMi41IiB3aWR0aD0iOCIgZmlsbD0iI0FBQSIgdHJhbnNmb3JtPSJtYXRyaXgoMC44NjYsMC41LC0wLjUsMC44NjYsNS43NTE3LC0xLjQ2NDQpICIgeT0iOC43NSIgeD0iMS42MDkiLz48L2c+IDxnPjxyZWN0IGhlaWdodD0iMi41IiB3aWR0aD0iOCIgZmlsbD0iI0FBQSIgeT0iMTQuNzUiLz48L2c+IDxnPjxyZWN0IGhlaWdodD0iOCIgd2lkdGg9IjIuNSIgZmlsbD0iI0FBQSIgdHJhbnNmb3JtPSJtYXRyaXgoMC40OTk4LDAuODY2MSwtMC44NjYxLDAuNDk5OCwyMS44NTk4LDYuMTQ1KSAiIHk9IjE4IiB4PSI0LjM1OSIvPjwvZz4gPGc+PHJlY3QgaGVpZ2h0PSI4IiB3aWR0aD0iMi41IiBmaWxsPSIjQUFBIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjg2NiwwLjUsLTAuNSwwLjg2NiwxNC41MzU5LC0xLjQ2NTEpICIgeT0iMjIuMzkyIiB4PSI4Ljc1MiIvPjwvZz4gPGc+PHJlY3QgaGVpZ2h0PSI4IiB3aWR0aD0iMi41IiBmaWxsPSIjQUFBIiB5PSIyNCIgeD0iMTQuNzUyIi8+PC9nPiA8Zz48cmVjdCBoZWlnaHQ9IjIuNSIgd2lkdGg9IjgiIGZpbGw9IiNBQUEiIHRyYW5zZm9ybT0ibWF0cml4KDAuNTAwMSwwLjg2NiwtMC44NjYsMC41MDAxLDMzLjg1MjYsLTUuODYwMykgIiB5PSIyNS4xNDEiIHg9IjE4LjAwMyIvPjwvZz4gPGc+PHJlY3QgaGVpZ2h0PSIyLjUiIHdpZHRoPSI4IiBmaWxsPSIjQUFBIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjg2NjEsMC40OTk4LC0wLjQ5OTgsMC44NjYxLDE0LjUyODcsLTEwLjI0NzYpICIgeT0iMjAuNzQ3IiB4PSIyMi4zOTQiLz48L2c+IDxnPjxyZWN0IGhlaWdodD0iMi41IiB3aWR0aD0iOCIgZmlsbD0iI0FBQSIgeT0iMTQuNzQ3IiB4PSIyNC4wMDEiLz48L2c+IDxnPjxyZWN0IGhlaWdodD0iOCIgd2lkdGg9IjIuNSIgZmlsbD0iI0FBQSIgdHJhbnNmb3JtPSJtYXRyaXgoMC41LDAuODY2LC0wLjg2NiwwLjUsMjEuODUzNiwtMTcuODU3NykgIiB5PSI1Ljk5NyIgeD0iMjUuMTQyIi8+PC9nPiA8Zz48cmVjdCBoZWlnaHQ9IjgiIHdpZHRoPSIyLjUiIGZpbGw9IiNBQUEiIHRyYW5zZm9ybT0ibWF0cml4KDAuODY2MywwLjQ5OTUsLTAuNDk5NSwwLjg2NjMsNS43NDE3LC0xMC4yMzk5KSAiIHk9IjEuNjA2IiB4PSIyMC43NDkiLz48L2c+IDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgYXR0cmlidXRlVHlwZT0iWE1MIiB0eXBlPSJyb3RhdGUiIGZyb209IjAgMTYgMTYiIHRvPSIzNjAgMTYgMTYiIGJlZ2luPSIwcyIgZHVyPSI0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4gPC9nPiA8L3N2Zz4=);
+	background-position: calc(100% - 4px) 50%;
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+}
+
+.seligo-drop[data-mode="xhr"] .seligo-options:empty:before {
+	content: 'No results';
+}

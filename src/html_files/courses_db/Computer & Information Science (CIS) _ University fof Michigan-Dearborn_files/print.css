@@ -1,0 +1,73 @@
+@import url('courseleaf.css');
+@import url('screen.css');
+
+/*Courseleaf Controls*/
+#pw_toolbar,
+#pw_toolbar_toggle,
+#pw_statusbar,
+#sb_publish_bubble_bottom,
+#warningwin,
+#loadingwin,
+.lfeditable,
+.lfjsbubble {
+	display: none;
+}
+
+/*Tabs*/
+#tabs {
+	display: none !important;
+}
+.tab_content {
+	display: block !important;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.row,
+#content-container .wrap {
+	/* fixes firefox flex issue */
+	display: block;
+}
+div[class^=col] {
+	max-width: none !important;
+	width: 100% !important;
+	float: none !important;
+	flex: 100%;
+}
+
+.accessible,
+#header,
+#navigation,
+#footer,
+#sidebar,
+#print-button,
+#search,
+a#totop,
+#breadcrumb,
+#sidebar-toggle,
+#content ul.letternav,.gcs-pagination,
+#local-header,
+#col-nav {
+	display: none !important;
+}
+
+#left-col,
+#right-col,
+#col-content,
+#col-nav {
+	margin: 0;
+	float: none;
+	width: auto;
+	clear: both;
+	max-width: none;
+}
+.wrap {
+	width: 100% !important;
+	max-width: none !important;
+}
+.toggle-content {
+	display: block !important;
+}

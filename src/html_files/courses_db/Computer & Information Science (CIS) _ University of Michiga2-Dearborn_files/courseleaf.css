@@ -1,0 +1,679 @@
+/*
+
+DO NOT EDIT CSS - this CSS is compiled from 
+    /courseleaf/scss/courseleaf
+If you need help, please contact the PO (product owner).
+
+*/
+.cola {
+  width: 48%;
+  float: left;
+}
+
+.colb {
+  width: 48%;
+  float: right;
+}
+
+@media (max-width: 767px) {
+  .cola,
+  .colb {
+    width: auto;
+    float: none;
+  }
+}
+
+table[class^=sc_],
+table.grid {
+  width: 100%;
+}
+
+table[class^=sc_] th,
+table[class^=sc_] td,
+table.grid th,
+table.grid td {
+  padding: 0.25rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+table[class^=sc_] th,
+table.grid th {
+  font-weight: bold;
+}
+
+table[class^=sc_] tr.areaheader td, table[class^=sc_] tr.areaheader,
+table[class^=sc_] tr.listsum td,
+table[class^=sc_] tr.plangridtotal td,
+table[class^=sc_] tr.plangridsum td,
+table[class^=sc_] tr .areaheader,
+table.grid tr.areaheader td,
+table.grid tr.areaheader,
+table.grid tr.listsum td,
+table.grid tr.plangridtotal td,
+table.grid tr.plangridsum td,
+table.grid tr .areaheader {
+  font-weight: bold;
+}
+
+table[class^=sc_] tr.areasubheader,
+table[class^=sc_] tr.areasubheader td,
+table[class^=sc_] tr td.areasubheader,
+table.grid tr.areasubheader,
+table.grid tr.areasubheader td,
+table.grid tr td.areasubheader {
+  font-style: italic;
+}
+
+table[class^=sc_] tr td.hourscol,
+table[class^=sc_] tr th.hourscol,
+table.grid tr td.hourscol,
+table.grid tr th.hourscol {
+  text-align: right;
+  width: 10%;
+  white-space: nowrap;
+}
+
+table[class^=sc_].sorttable tr.odd,
+table[class^=sc_].sorttable tr.even,
+table.grid.sorttable tr.odd,
+table.grid.sorttable tr.even {
+  background: none;
+}
+
+table[class^=sc_].sorttable tr:nth-child(2n),
+table.grid.sorttable tr:nth-child(2n) {
+  background: #f5f5f5;
+}
+
+table[class^=sc_].sc_footnotes,
+table.grid.sc_footnotes {
+  border: 0;
+  font-size: 15px;
+}
+
+table[class^=sc_].sc_footnotes td,
+table.grid.sc_footnotes td {
+  padding: 0 0 0.75em 0;
+  border: 0;
+}
+
+table[class^=sc_].sc_footnotes td.symcol,
+table.grid.sc_footnotes td.symcol {
+  width: 15px;
+}
+
+table[class^=sc_].sc_footnotes td ul,
+table.grid.sc_footnotes td ul {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+table[class^=sc_].sc_footnotes td li,
+table.grid.sc_footnotes td li {
+  font-size: 1em;
+}
+
+ul.letternav {
+  padding: 0;
+  margin: 0 0 1em 0;
+  list-style: none;
+}
+
+ul.letternav li {
+  text-transform: uppercase;
+  font-weight: bold;
+  float: left;
+  margin: 0 1px 1px 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.letternav li:before, ul.letternav li:after {
+  display: none;
+}
+
+ul.letternav li a, ul.letternav li.inactive {
+  padding: .25em .6em;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  width: 1em;
+  float: left;
+  border: none;
+  background: #EEE;
+  box-sizing: content-box;
+}
+
+ul.letternav li a {
+  text-decoration: none;
+  border: none;
+}
+
+ul.letternav li a:hover, ul.letternav li a:active, ul.letternav li a:focus {
+  background: #DDD;
+}
+
+ul.letternav li.inactive {
+  background: #FAFAFA;
+}
+
+ul.letternav li.inactive a {
+  background: none;
+  color: #333;
+  padding: 0;
+}
+
+ul.letternav li.inactive a:hover, ul.letternav li.inactive a:focus {
+  background: none;
+  cursor: text;
+}
+
+li br {
+  content: '';
+  display: block;
+  margin: 0 0 0.3em;
+}
+
+sup,
+sub {
+  font-size: 0.75em;
+  line-height: 1;
+}
+
+sup {
+  vertical-align: super;
+}
+
+sub {
+  vertical-align: sub;
+}
+
+.onthispage .otp-title {
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+.onthispage ul {
+  font-size: 0.9rem;
+  padding: 10px 15px 0;
+}
+
+.onthispage ul li:last-child {
+  padding-bottom: 0;
+}
+
+.onthispage ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.onthispage ul li a:hover, .onthispage ul li a:focus {
+  text-decoration: underline;
+}
+
+.onthispage ul ul {
+  list-style-type: square;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+h2.toggle,
+h3.toggle,
+h4.toggle {
+  padding: 0;
+  margin: 0;
+}
+
+h2.toggle:before, h2.toggle:after,
+h3.toggle:before,
+h3.toggle:after,
+h4.toggle:before,
+h4.toggle:after {
+  display: none;
+}
+
+h2.toggle button,
+h3.toggle button,
+h4.toggle button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  text-transform: inherit;
+  padding: 5px 0 5px 30px;
+  cursor: pointer;
+  color: inherit;
+  position: relative;
+}
+
+h2.toggle button:before,
+h3.toggle button:before,
+h4.toggle button:before {
+  content: '+';
+  line-height: 0;
+  font-weight: normal;
+  vertical-align: top;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+
+h2.toggle button[aria-expanded=true]:before,
+h3.toggle button[aria-expanded=true]:before,
+h4.toggle button[aria-expanded=true]:before {
+  content: '-';
+}
+
+.toggle-group {
+  margin-bottom: 25px;
+}
+
+.toggle-group .toggle-content[aria-hidden=true] {
+  display: none;
+}
+
+dl.sc_footnotes,
+dl.sc_footnotes dt,
+dl.sc_footnotes dd {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: .85rem;
+}
+
+dl.sc_footnotes {
+  margin-bottom: 15px;
+}
+
+dl.sc_footnotes dt,
+dl.sc_footnotes dd {
+  display: inline-block;
+  vertical-align: top;
+}
+
+dl.sc_footnotes {
+  display: block;
+}
+
+dl.sc_footnotes dt {
+  width: 5%;
+  font-weight: bold;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+dl.sc_footnotes dd {
+  width: 94%;
+}
+
+table.sc_courselist.hiddencourselist {
+  display: none;
+}
+
+table.sc_courselist tr.orclass td {
+  padding-top: 0;
+  border-top: none;
+}
+
+table.sc_courselist tr.orclass td.codecol {
+  padding-left: 1em;
+}
+
+table.sc_courselist td.codecol {
+  width: 25%;
+}
+
+table.sc_courselist td[colspan="2"] + td.hourscol {
+  width: 75px;
+  white-space: nowrap;
+}
+
+table.sc_plangrid .plangridterm th {
+  background: #F6F6F6;
+  color: inherit;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  border-bottom: 0;
+}
+
+.scimage img {
+  display: block;
+}
+
+.scimage.imgleft, .scimage.imgright {
+  width: 300px;
+}
+
+.scimage.imgleft {
+  float: left;
+  margin: 0 15px 15px 0;
+}
+
+.scimage.imgright {
+  float: right;
+  margin: 0 0 15px 15px;
+}
+
+.scimage.imgcenter, .scimage.imgfullwidth {
+  margin-bottom: 25px;
+}
+
+.scimage.imgcenter {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.scimage.imgcenter:before, .scimage.imgcenter:after {
+  content: " ";
+  display: table;
+}
+
+.scimage.imgcenter:after {
+  clear: both;
+}
+
+.scimage.imgcenter figcaption {
+  flex: 0 0 100%;
+}
+
+.scimage.imgfullwidth:before, .scimage.imgfullwidth:after {
+  content: " ";
+  display: table;
+}
+
+.scimage.imgfullwidth:after {
+  clear: both;
+}
+
+.scimage.imgfullwidth img {
+  width: 100%;
+  height: auto;
+}
+
+.scimage.hascaption {
+  border-radius: 3px;
+  padding: 5px;
+  background: #EAEAEA;
+}
+
+.scimage figcaption {
+  font-size: 0.85em;
+  margin: 5px 2px 2px;
+  line-height: 1.1;
+}
+
+#fssearchresults .searchresult {
+  margin-bottom: 20px;
+}
+
+#fssearchresults .searchresult + .searchresult {
+  padding-top: 20px;
+  border-top: 1px solid #EAEAEA;
+}
+
+#fssearchresults h2,
+#fssearchresults h3 {
+  margin: 0;
+  padding: 0;
+  text-transform: none;
+}
+
+#fssearchresults h2:before, #fssearchresults h2:after,
+#fssearchresults h3:before,
+#fssearchresults h3:after {
+  display: none;
+}
+
+#fssearchresults h2 {
+  font-size: 1rem;
+}
+
+#fssearchresults h2 a {
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+#fssearchresults h3 {
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+#fssearchresults p {
+  margin: 15px 0;
+}
+
+#fssearchresults p.noindent {
+  margin: 3px 0;
+}
+
+#fssearchresults p.search-url {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+}
+
+#archive-selector {
+  margin-bottom: 25px;
+}
+
+#archive-selector label {
+  font-size: 0.85rem;
+}
+
+#archive-selector select {
+  margin: 0 10px;
+}
+
+#archive-selector button {
+  cursor: pointer;
+  background: #DDD;
+  color: #000;
+  border-radius: 10px;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.grid-shell {
+  display: block;
+  position: relative;
+}
+
+.grid-sort-controls {
+  background: #EEEEEE;
+  padding: 1rem;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 600px) {
+  .grid-sort-controls {
+    float: right;
+  }
+}
+
+.grid-sort-controls.hidden {
+  display: none;
+}
+
+.grid-sort-controls:before {
+  display: block;
+  width: 100%;
+  text-align: left;
+  content: "View";
+  color: #555;
+  font-weight: bold;
+}
+
+.grid-sort-controls select {
+  font-size: 14px;
+}
+
+.select-list-header-sub {
+  margin-bottom: 1rem;
+}
+
+.select-list-header-sub.hidden {
+  display: none;
+  position: fixed;
+  left: 105%;
+}
+
+.select-list-header-sub.visible {
+  display: none;
+  position: static;
+  left: auto;
+}
+
+.select-list-header-sub ul {
+  margin: 0;
+}
+
+.select-list-header-sub ul li {
+  list-style-type: none;
+}
+
+table.grid {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: none;
+}
+
+table.grid.visible {
+  display: table;
+}
+
+table.grid ul.mustbullet,
+table.grid ul.mustbullet li {
+  list-style-type: disc;
+}
+
+table.grid caption {
+  position: static;
+}
+
+table.grid caption:before, table.grid caption:after {
+  content: " ";
+  display: table;
+}
+
+table.grid caption:after {
+  clear: both;
+}
+
+table.grid caption.hidden {
+  display: none;
+}
+
+table.grid caption.visible {
+  display: block;
+}
+
+table.grid thead tr {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  table.grid thead tr {
+    display: table-row;
+  }
+}
+
+table.grid thead tr th,
+table.grid thead tr td {
+  vertical-align: middle;
+}
+
+table.grid tbody tr {
+  display: table-row;
+}
+
+table.grid tbody tr th,
+table.grid tbody tr td {
+  display: table-cell;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  text-align: left;
+  background: transparent;
+  color: #333;
+}
+
+table.grid tbody tr th .table-header-text,
+table.grid tbody tr td .table-header-text {
+  display: block;
+  font-weight: bold;
+}
+
+@media (min-width: 600px) {
+  table.grid tbody tr th .table-header-text,
+  table.grid tbody tr td .table-header-text {
+    display: none;
+  }
+}
+
+table.grid tbody tr.hidden th,
+table.grid tbody tr.hidden td {
+  text-indent: -2000px;
+  padding: 0;
+  font-size: .1px;
+}
+
+table.grid tbody tr th {
+  font-weight: bold;
+  background: #ECECEC;
+}
+
+table.grid tbody tr td {
+  display: block;
+}
+
+table.grid tbody tr td:first-child {
+  display: table-cell;
+}
+
+@media (min-width: 600px) {
+  table.grid tbody tr td {
+    display: table-cell;
+  }
+}
+
+table.grid tbody tr.odd {
+  background: #F6F6F6;
+}
+
+.sc_video__wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+
+.sc_video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sc_video__transcript-inline[aria-hidden=true] {
+  display: none;
+}
+
+.sc_video__transcript-btn {
+  margin: 0 0 1.5rem;
+}

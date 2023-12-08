@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://0a398bb4-9b69-4205-9243-62a6758f83f7.rlets.com/static/storage.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>CAPTURE THIRD-PARTY DOMAIN STORAGE</title><script>function getCookie(e){return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"+encodeURIComponent(e).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=\\s*([^;]*).*$)|^.*$"),"$1"))||null}function setCookie(e,t,o){var s=new Date;s.setTime(s.getTime()+864e5*o),"https:"===document.location.protocol?document.cookie=e+"="+t+";SameSite=None;Secure;path=/;expires="+s.toGMTString():document.cookie=e+"="+t+";SameSite=None;path=/;expires="+s.toGMTString()}function isCookieStorageEnabled(){try{return setCookie("test","test",1),"test"===getCookie("test")}catch(e){return!1}}function isWebStorageEnabled(){try{return sessionStorage.setItem("test","test"),localStorage.setItem("test","test"),"test"===sessionStorage.getItem("test")&&"test"===localStorage.getItem("test")}catch(e){return!1}}function getItems(e){var o={};return e.forEach(function(t){try{o[t]="rl_campaign"===t?sessionStorage.getItem(t):localStorage.getItem(t)||getCookie(t)}catch(e){console.warn(e),o[t]=null}}),o}function removeItems(e){e.forEach(function(e){try{("rl_campaign"===e?sessionStorage:localStorage).removeItem(e)}catch(e){console.warn(e)}})}function setItems(t){Object.keys(t).forEach(function(e){try{("rl_campaign"===e?sessionStorage:localStorage).setItem(e,t[e]),("visitor_id"===e||"sifi_user_id"===e)&&setCookie(e,t[e],3650)}catch(e){console.warn(e)}})}function parseJson(e){try{return JSON.parse(e)}catch(e){return null}}function receiveMessage(e){var t,o,s;e.data&&(t=parseJson(e.data))&&("GET"===(o=t.method)?s=getItems(t.keys):"REMOVE"===o?removeItems(t.keys):"SET"===o&&setItems(t.items),e.source.postMessage(JSON.stringify({id:t.id,result:s}),e.origin))}isCookieStorageEnabled()||window.parent.postMessage("cookie_disabled","*"),isWebStorageEnabled()||window.parent.postMessage("web_storage_disabled","*"),window.addEventListener("message",receiveMessage)</script></head><body data-new-gr-c-s-check-loaded="14.1139.0" data-gr-ext-installed="">OK<script>window.parent.postMessage("loaded","*")</script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
