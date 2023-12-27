@@ -16,7 +16,7 @@ Hi there! 👋 We're excited to have you on board. The UMDearborn Web Tech AI Vi
 ## OpenAI API Key Setup:  🔑
 - **Instructions:** 
 1) Install python-dotenv
-2) Create a file named .env in the project
+2) Create a file named .env in the root directory of src
 3) On the first line, write OPENAI_API_KEY="INSERT API KEY HERE"
 
 ## Build Project: 
