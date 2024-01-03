@@ -14,6 +14,7 @@ from langchain.document_loaders import DirectoryLoader
 import pdf2image
 import pdfminer
 
+
 print("Creating VectorDatabases...")
 load_dotenv('.env')
 
@@ -22,9 +23,7 @@ c2_dir =  ('db/checkpoint2', 'kb/checkpoint2')
 c3_dir =  ('db/checkpoint3', 'kb/checkpoint3')
 c4_dir =  ('db/checkpoint4', 'kb/checkpoint4')
 c5_dir =  ('db/checkpoint5', 'kb/checkpoint5')
-syllabus_dir =  ('db/syllabus', 'kb/syllabus') 
-course_info_dir = ('db/course_info', 'kb/course_info')
-databases = [c1_dir, c2_dir, c3_dir, c4_dir, c5_dir, syllabus_dir, course_info_dir]
+databases = [c1_dir, c2_dir, c3_dir, c4_dir, c5_dir]
 
 def createNewDB(db_dir, pdf_dir):
     """Scraps Information from given pdfs in the knowledgebase and transforms it into OpenAI Embeddings, storing them in a VectorDB."""
@@ -48,9 +47,11 @@ def createNewDB(db_dir, pdf_dir):
         return
 
     vectordb.persist()
+    print("vector db created")
     vectordb = None
 
 for db in databases:
     createNewDB(db[0], db[1])
+
     
 print("JOB FINISHED!")
