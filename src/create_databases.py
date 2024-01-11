@@ -9,7 +9,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
-from langchain.document_loaders import UnstructuredPDFLoader
+from langchain.document_loaders import UnstructuredPDFLoader,UnstructuredHTMLLoader
 from langchain.document_loaders import DirectoryLoader
 import pdf2image
 import pdfminer
@@ -23,7 +23,8 @@ c2_dir =  ('db/checkpoint2', 'kb/checkpoint2')
 c3_dir =  ('db/checkpoint3', 'kb/checkpoint3')
 c4_dir =  ('db/checkpoint4', 'kb/checkpoint4')
 c5_dir =  ('db/checkpoint5', 'kb/checkpoint5')
-databases = [c1_dir, c2_dir, c3_dir, c4_dir, c5_dir]
+c1_f23_dir = ('db/checkpoint1_f23', 'kb/checkpoint1_f23')
+databases = [c1_dir, c2_dir, c3_dir, c4_dir, c5_dir, c1_f23_dir]
 
 def createNewDB(db_dir, pdf_dir):
     """Scraps Information from given pdfs in the knowledgebase and transforms it into OpenAI Embeddings, storing them in a VectorDB."""
