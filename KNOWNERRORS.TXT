@@ -1,0 +1,6 @@
+Jan 10, 2023
+
+1) The HTML file upload needs to be converted into raw text. The current method makes the bot unable to intrepret uploaded HTML files as code. This is an easy fix.
+
+2) There is an issue with the code analysis tool currently. Essentially, the ftprompt does not follow the correct prompt template format, causing issues with sending
+the data back to the GPT 4 model. 

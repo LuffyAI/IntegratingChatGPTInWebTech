@@ -1,6 +1,6 @@
 #Author: Larnell Moore
 #Creation Date: December 26, 2023
-#Date Modified: December 29, 2023
+#Date Modified: Jan 10, 2023
 #Purpose: This file runs the chainlit client and allows the user to interact with the model.
 
 import PyPDF2
@@ -37,8 +37,6 @@ import sqlparse
 # Download VADER lexicon for sentiment analysis
 nltk.download('vader_lexicon')
 
-
-
 # Directories that contain the chroma databases
 c1_dir = 'db/checkpoint1'
 c2_dir = 'db/checkpoint2'
@@ -47,7 +45,6 @@ c4_dir = 'db/checkpoint4'
 pdf_dir= 'db/vectordb'
 c1_f23_dir = 'db/checkpoint1_f23'
 embedding = OpenAIEmbeddings()
-
 
 # Directories that contain
 c1db = Chroma(persist_directory=c1_dir, embedding_function = embedding)
@@ -77,10 +74,16 @@ checkpoint1_f23_retriever.search_type = 'similarity'
 # OpenAI Model Settings
 llm = ChatOpenAI(temperature=0.5, model = "gpt-4-1106-preview", streaming=True)
 
+#Finetuned Model settings
+ftllm = ChatOpenAI(temperature=0.5, model = "ft:gpt-3.5-turbo-0613:personal::8HF18kYo", streaming=True)
+
 
 # Chat Memory with Token Buffer
 memory = ConversationTokenBufferMemory(memory_key="chat_history", llm=llm,max_token_limit=1000)
 readonly = ReadOnlySharedMemory(memory=memory)
+
+ftmemory = ConversationTokenBufferMemory(memory_key="chat_history", llm=ftllm,max_token_limit=1000)
+ftreadonly = ReadOnlySharedMemory(memory=ftmemory)
 
 # Chains
 c1_qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=c1_retriever, memory=readonly)
@@ -92,12 +95,32 @@ def dummy_func(*args, **kwargs):
     # This function might log the query, send it to the LLM, or just do nothing.
     pass
 
+
+def html_feedback(input=" "):
+    print(input)
+    try:
+        ft_llm_chain = LLMChain(llm=ftllm, prompt=ftprompt)
+        response = ft_llm_chain.run(input)
+        return response
+    
+    except Exception as e:
+        print("An error occurred in the on_chat_start function:")
+        traceback.print_exc()
+
+    return "Hello AI BOT! I am a developer! I am testing a function! I want to see if you can perform this action!"
+
+
 # Tools
 tools = [
     Tool (
         name = "Web Technology project proposal and feedback",
         func = c1_qa.run,
         description = "Useful for when you need to answer questions about Checkpoint1. Input should be fully formed question."
+    ),
+    Tool(
+        name = "Code Analysis",
+        func = html_feedback,
+        description = "Useful for when you the user asks to analyze code or provide code. Pass in the code or file uploaded to the user as input."
     ),
     Tool (
         name = "University of Michigan Faculty Information QA system",
@@ -129,6 +152,28 @@ prompt = ZeroShotAgent.create_prompt(
     suffix=suffix,
     input_variables=["input", "chat_history", "agent_scratchpad"]
 )
+
+ftprefix = """You are a helpful AI web dev assistant having a conversation with a student. Your objective is to provide feedback on the code they provide."""
+
+ftsuffix = """Begin!"
+Question: {input}
+"""
+
+toolft = []
+
+ftprompt = ZeroShotAgent.create_prompt(
+    tools = toolft,
+    prefix=ftprefix,
+    suffix=ftsuffix,
+    input_variables=["input"]
+)
+
+
+
+
+
+
+
 class ConversationFlowMemory:
     def __init__(self):
         self.session_history = {}
