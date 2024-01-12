@@ -1,0 +1,13 @@
+langchain==0.0.339
+chainlit==0.7.604
+openai==0.28.1
+chromadb==0.4.15
+openpyxl==3.1.2
+fastapi==0.100.1
+python-dotenv==1.0.0
+pdf2image==1.16.3
+pdfminer==20191125
+pdfminer.six==20221105
+opencv-python==4.9.0.80
+pdfplumber==0.10.3 
+pypdfium2==4.26.0
