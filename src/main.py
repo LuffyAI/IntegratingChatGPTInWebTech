@@ -10,6 +10,7 @@ import random
 from io import BytesIO
 import pdfplumber
 from bs4 import BeautifulSoup
+from helperFunctions import set_prevUpload
 
 conversation_memory = ConversationFlowMemory()
 
@@ -90,20 +91,19 @@ async def main(message: cl.Message):
                 print("An error occurred in the on_message function:", e)
         if html:
             print("HTML yes")
+            combined_html = ""
             try:
               for html_file in html:
                 if hasattr(html_file, 'content'):  # If the HTML content is provided as bytes
-                  with BytesIO(html_file.content) as html_buffer:
-                     soup = BeautifulSoup(html_buffer, 'html.parser')
-                     html_text = soup.get_text(separator='\n')
-            # Combine with your existing content
-                  content = response_intro + " " + response_prefix + content + '\n' + html_text
-            # Now, soup contains the parsed HTML
+                  html_content = html_file.content.decode()
+                  combined_html += html_content + '\n'
+                  set_prevUpload(combined_html)
                 else:
                  print(f"Unsupported HTML file type or missing content: {type(html_file)}")
-        
+              print(combined_html)
               answer_prefix_tokens = ["FINAL", "ANSWER"]
               agent_chain = cl.user_session.get("llm_chain")
+              content = response_intro + " " + response_prefix + content + '\n' + combined_html
               res = await agent_chain.arun(content, callbacks=[cl.AsyncLangchainCallbackHandler(stream_final_answer=True, answer_prefix_tokens=answer_prefix_tokens)])
               await cl.Message(content=res, author="BlueBot").send()
             except Exception as e:
