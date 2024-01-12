@@ -36,6 +36,8 @@ from langchain.document_loaders import DirectoryLoader
 import sqlparse
 # Download VADER lexicon for sentiment analysis
 nltk.download('vader_lexicon')
+from w3c_validator import validate
+import tempfile
 
 
 
@@ -92,6 +94,35 @@ def dummy_func(*args, **kwargs):
     # This function might log the query, send it to the LLM, or just do nothing.
     pass
 
+
+def html_validation(input= " "):
+    results = []
+
+    # Check if html_input is a file path
+    if os.path.isfile(input):
+        results = validate(input)["messages"]
+    else:
+        # Create a temporary file for the HTML content
+        with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.html', encoding='utf-8') as tmp_file:
+            tmp_file.write(input)
+            tmp_file_path = tmp_file.name
+        
+        # Validate the temporary file
+        results = validate(tmp_file_path)["messages"]
+
+        # Clean up the temporary file
+        os.remove(tmp_file_path)
+
+    # Format the results
+    formatted_results = []
+    for m in results:
+        formatted_result = f"Type: {m['type']}, Line: {m.get('lastLine', 'N/A')}, Description: {m['message']}"
+        formatted_results.append(formatted_result)
+
+    return "\n".join(formatted_results) if formatted_results else "No issues found."
+
+
+    
 # Tools
 tools = [
     Tool (
@@ -113,6 +144,11 @@ tools = [
         name = "General LLM Query",
         func = dummy_func,
         description="Useful for answering general questions not related to the University of Michigan-Dearborn. This tool does not have a specific function and sends queries directly to the LLM for a wide range of topics and inquiries."
+    ),
+    Tool(
+        name = "HTML code validation using W3C",
+        func = html_validation,
+        description="Use full for answering code smell detection and code vulnerabilities and syntax errors of html code"
     )
 ]
 
@@ -233,16 +269,17 @@ async def main(message: cl.Message):
             print("HTML yes")
             try:
               for html_file in html:
-                if hasattr(html_file, 'content'):  # If the HTML content is provided as bytes
-                  with BytesIO(html_file.content) as html_buffer:
-                     soup = BeautifulSoup(html_buffer, 'html.parser')
+                if hasattr(html_file, 'content') and html_file.content: # If the HTML content is provided as bytes
+                     html_content = BytesIO(html_file.content).read().decode('utf-8')
+                     soup = BeautifulSoup(html_content, 'html.parser')
                      html_text = soup.get_text(separator='\n')
             # Combine with your existing content
-                  content = response_intro + " " + response_prefix + content + '\n' + html_text
+                     content = response_intro + " " + response_prefix + content + '\n' + html_text
             # Now, soup contains the parsed HTML
                 else:
                  print(f"Unsupported HTML file type or missing content: {type(html_file)}")
-        
+              validation_results = html_validation(html_content)
+              print(validation_results) 
               answer_prefix_tokens = ["FINAL", "ANSWER"]
               agent_chain = cl.user_session.get("llm_chain")
               res = await agent_chain.arun(content, callbacks=[cl.AsyncLangchainCallbackHandler(stream_final_answer=True, answer_prefix_tokens=answer_prefix_tokens)])
