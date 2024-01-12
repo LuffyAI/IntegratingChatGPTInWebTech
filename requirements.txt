@@ -11,3 +11,4 @@ pdfminer.six==20221105
 opencv-python==4.9.0.80
 pdfplumber==0.10.3 
 pypdfium2==4.26.0
+Online-W3C-Validator==0.3.21
