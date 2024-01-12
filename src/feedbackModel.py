@@ -20,7 +20,7 @@ class FeedbackAgent:
     response = openai.ChatCompletion.create(
         model=self.fine_tuned_model,
         temperature=0.5,
-        max_tokens=4096,
+        max_tokens=3000,
         messages=[
             {"role": "user", "content": input_text}
         ]

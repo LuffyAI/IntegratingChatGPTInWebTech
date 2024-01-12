@@ -2,7 +2,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationTokenBufferMemory, ReadOnlySharedMemory
 from langchain.chains import LLMChain
 from langchain.agents import ZeroShotAgent, Tool, AgentExecutor
-from helperFunctions import createRetrievalChains, dummy_func, html_feedback, html_validation
+from helperFunctions import createRetrievalChains, dummy_func, finetuned_feedback, html_validation
 from dotenv import load_dotenv
 
 class RAGAgent:
@@ -18,6 +18,7 @@ class RAGAgent:
 
         # Tools
         retrievalChains = createRetrievalChains(self.llm, self.memory)
+        
 
         self.tools = [
             Tool(
@@ -41,9 +42,9 @@ class RAGAgent:
                 description="Useful for answering general questions not related to the University of Michigan-Dearborn. This tool does not have a specific function and sends queries directly to the LLM for a wide range of topics and inquiries."
             ),
             Tool(
-                name = "Code Analysis",
-                func = html_feedback,
-                description="Useful for when you the user asks to analyze code or provide code. Pass in the code or file uploaded to the user as input. The input is sent to be a finetuned GPT 3.5 model, so be mindful of its token count."
+                name = "Finetuned Code Analysis",
+                func = finetuned_feedback,
+                description="Useful for when you the user asks to analyze code or provide code. Identify the parts of the user message that is code and send that to the GPT 3.5 model."
             ),
              Tool(
                 name = "HTML code validation using W3C",

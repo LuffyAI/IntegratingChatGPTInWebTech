@@ -5,11 +5,26 @@
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
+from langchain.text_splitter import RecursiveCharacterTextSplitter, Language
 from feedbackModel import FeedbackAgent
 from w3c_validator import validate
 import tempfile
-import traceback
+import tiktoken
 import os
+import subprocess
+
+prevUpload="testValue"
+
+def get_prevUpload():
+    return prevUpload
+
+def set_prevUpload(new_value):
+    global prevUpload
+    prevUpload = new_value
+    
+def estimate_token_count(text):
+    # Rough estimation of token count
+    return len(text) // 4
 
 def createRetrievalChains(llm, memory):
     """
@@ -45,13 +60,36 @@ def dummy_func(*args, **kwargs):
     # This function might log the query, send it to the LLM, or just do nothing.
     pass
 
-def html_feedback(input=" "):
-    print(input)
-    FB = FeedbackAgent()
-    response = FB.chat(input)
-    return response
+def finetuned_feedback(input = " "):
+    """Chunks the document"""
+    input = prevUpload
+    MAX_TOKENS = 1000
+    # Calculate the token count of the input
+    input_token_count = count_tokens(input)
+    print("This is the estimated token count" + str(input_token_count))
+    
+    if input_token_count <= MAX_TOKENS:
+        # If the input is within the limit, send it for feedback
+        FB = FeedbackAgent()
+        response = FB.chat("Please provide code analysis on following code: " + input)
+        return response
+    else:
+       HTML_splitter = RecursiveCharacterTextSplitter.from_language(
+       language=Language.HTML, chunk_size=50, chunk_overlap=0)
+       HTML_CHUNKS = HTML_splitter.create_documents([input])
+       print(HTML_CHUNKS)
+       return "Everything looks good"
+
+def count_tokens(input):
+    encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+    tokens = len(encoding.encode(input))
+    return tokens
 
 def html_validation(input= " "):
+    print("This is what the AI AGENT PASSED INTO THIS FUNCTION:" + input)
+    print("prev:" + prevUpload)
+    input = prevUpload
+    
     results = []
 
     # Check if html_input is a file path
@@ -78,6 +116,29 @@ def html_validation(input= " "):
     return "\n".join(formatted_results) if formatted_results else "No issues found."
 
 
+def php_code_sniffer(input= " ", standard='PSR2'):
+    print("This is what the AI AGENT PASSED INTO THIS FUNCTION:" + input)
+    print("prev:" + prevUpload)
+    input = prevUpload
+    
+    # Save the PHP code to a temporary file
+    with open('temp_php_file.php', 'w') as temp_file:
+        temp_file.write(input)
 
+    # Run PHP CodeSniffer command
+    cmd = ['phpcs', '--standard=' + standard, 'temp_php_file.php']
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
+    # Delete the temporary PHP file
+    subprocess.run(['rm', 'temp_php_file.php'])
+
+    output_message = result.stdout + result.stderr  # Capture both standard output and error
+
+    if result.returncode == 0:
+        return True, "PHP code follows coding standards", output_message
+    else:
+        error_message = result.stderr
+        return False, error_message, output_message
+    
+    
 
