@@ -71,14 +71,24 @@ def finetuned_feedback(input = " "):
     if input_token_count <= MAX_TOKENS:
         # If the input is within the limit, send it for feedback
         FB = FeedbackAgent()
-        response = FB.chat("Please provide code analysis on following code: " + input)
+        response = FB.chat("Please provide feedhack and suggestions: " + input)
         return response
     else:
        HTML_splitter = RecursiveCharacterTextSplitter.from_language(
-       language=Language.HTML, chunk_size=50, chunk_overlap=0)
-       HTML_CHUNKS = HTML_splitter.create_documents([input])
-       print(HTML_CHUNKS)
-       return "Everything looks good"
+       language=Language.HTML, chunk_size=1000, chunk_overlap=0)
+       HTML_CHUNKS = HTML_splitter.split_text(input)
+       
+       # Send each chunk for feedback and accumulate the responses
+       accumulated_response = ""
+       
+       # Creates temp buffer memory for conversation
+       FB = FeedbackAgent()
+       for chunk in HTML_CHUNKS:
+            FB = FeedbackAgent()
+            response = FB.chat("Please provide feedhack and suggestions: " + chunk)
+            accumulated_response += "\n" + response
+
+       return accumulated_response
 
 def count_tokens(input):
     encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
