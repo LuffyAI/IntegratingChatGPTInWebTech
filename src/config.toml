@@ -1,0 +1,17 @@
+[UI.theme.dark]
+    background = "#00274C"  # U-M Blue
+    paper = "#FFFFFF"
+
+    [UI.theme.dark.primary]
+        main = "#00274C"  # U-M Blue
+        dark = "#001C3D"  # Darker U-M Blue
+        light = "#FFCB05"  # U-M Maize
+
+[UI.theme.light]
+    background = "#FFCB05"  # U-M Maize
+    paper = "#FFFFFF"
+
+    [UI.theme.light.primary]
+        main = "#FFCB05"  # U-M Maize
+        dark = "#B99700"  # Darker U-M Maize
+        light = "#FFF9D9"  # Light U-M Maize

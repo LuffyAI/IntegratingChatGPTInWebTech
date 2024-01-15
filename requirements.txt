@@ -8,3 +8,8 @@ python-dotenv==1.0.0
 pdf2image==1.16.3
 pdfminer==20191125
 pdfminer.six==20221105
+opencv-python==4.9.0.80
+pdfplumber==0.10.3 
+pypdfium2==4.26.0
+Online-W3C-Validator==0.3.21
+sqlfluff==2.3.5
