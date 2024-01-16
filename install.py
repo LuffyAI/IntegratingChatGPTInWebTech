@@ -4,6 +4,10 @@
 # Purpose: This file automatically installs the program's dependencies in Ubuntu. You must run sudo python3 install.py for it work.
 import subprocess
 import sys
+import nltk
+
+def install_vader_lexicon():
+    nltk.downloader.download('vader_lexicon')
 
 def install_ubuntu_packages(ubuntu_packages):
     try:
@@ -51,3 +55,4 @@ if __name__ == "__main__":
 
      install_ubuntu_packages(ubuntu_packages)
      install_python_requirements(requirements_file)
+     install_vader_lexicon()
