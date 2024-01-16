@@ -2,6 +2,8 @@
 
 Hi there! 👋 We're thrilled to have you on board. This Virtual Assistant provides insightful feedback for your Web Tech assignments.
 
+![Animation](https://github.com/BinaryBills/IntegratingChatGPTInWebTech/assets/84648682/faad56f7-6a23-4973-903c-fcf38f98cfcc)
+
 ## Feedback Features 📚
 
 - **GPT 4 Vision Color Theory Analysis**: 
