@@ -13,3 +13,4 @@ pdfplumber==0.10.3
 pypdfium2==4.26.0
 Online-W3C-Validator==0.3.21
 sqlfluff==2.3.5
+nltk==3.8.1
