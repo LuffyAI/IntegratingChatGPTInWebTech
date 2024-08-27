@@ -5,6 +5,10 @@
 import subprocess
 from collections.abc import Iterable
 import sys
+import nltk
+
+def install_vader_lexicon():
+    nltk.downloader.download('vader_lexicon')
 
 def install_ubuntu_packages(ubuntu_packages):
     try:
@@ -52,3 +56,4 @@ if __name__ == "__main__":
 
      install_ubuntu_packages(ubuntu_packages)
      install_python_requirements(requirements_file)
+     install_vader_lexicon()
