@@ -44,18 +44,18 @@ class RAGAgent:
             ),
             Tool(
                 name="Checkpoint 1: Web Technology Project Proposal",
-                func=retrievalChains['checkpoint1'].run,
+                func=retrievalChains['checkpoint1_f23'].run,
                 description="Useful for when you need to answer questions about Checkpoint1. Input should be fully formed question."
             ),
             Tool(
-                name="Checkpoint 2: HTML Pages",
-                func=retrievalChains['checkpoint2'].run,
-                description="Useful for when you need to answer questions about Checkpoint2."
+                name="Checkpoint 2: code rubrics, page",
+                func=retrievalChains['checkpoint2_f23'].run,
+                description="Useful for when you need to answer questions about Checkpoint2 and HTML code"
             ),
             Tool(
                 name="Checkpoint 3: Database Design",
-                func=retrievalChains['checkpoint3'].run,
-                description="Useful for when you need to answer questions about checkpoint3."
+                func=retrievalChains['checkpoint3_f23'].run,
+                description="Useful for when you need to answer questions about checkpoint3 an database."
             ),
             Tool(
                 name = "Code Feedback",
@@ -101,7 +101,7 @@ class RAGAgent:
         ]
 
         # Prefix and Suffix
-        self.prefix = """You are a helpful AI assistant having a conversation with a student. Your objective is to answer their questions about the University of Michigan's Dearborn Web Technology class and provide feedback on their work. If you do not know the answer to a question, take your best-educated guess and simply tell them you are unsure about your answer. You have access to the following tools:"""
+        self.prefix = """Act as an expert in web technologies.Your goal is to provide answers about the University of Michigan's Dearborn Web Technology class and provide detailed constructive feedback on their work in a encourqaging way. If you do not know the answer to a question, take your best-educated guess and simply tell them you are unsure about your answer. You have access to the following tools:"""
         self.suffix = """Begin!"
         {chat_history}
         Question: {input}
