@@ -3,6 +3,7 @@
 # Date Modified: Jan 15, 2024
 # Purpose: This file automatically installs the program's dependencies in Ubuntu. You must run sudo python3 install.py for it work.
 import subprocess
+from collections.abc import Iterable
 import sys
 
 def install_ubuntu_packages(ubuntu_packages):

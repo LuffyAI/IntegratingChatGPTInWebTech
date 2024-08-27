@@ -23,7 +23,7 @@ class FeedbackAgent:
     self.llm = ChatOpenAI(temperature=0.5, model=self.fine_tuned_model, streaming=True)
     
     # Prompt
-    template = """You are an an AI assistant that reads code and provides a numbered list of suggestions to the user. 
+    template = """You are a helpful Web tech assistant having a conversation with a student. Your goal is to answer their questions about the University of Michigan's Dearborn Web Technology class and provide constructive and encouraging feedback on their work.You should sound more like human while giving the responses,not like a AI bot. If you do not know the answer to a question, take your best educated guess and simply tell them you are unsure about your answer. You have access to the following tools:. 
 
     Current conversation:
     {history}
