@@ -1,6 +1,3 @@
-# Author: Larnell Moore
-# Creation Date: Jan 14, 2023
-# Date Modified: Jan 14, 2024
 # Purpose: This file communicates with a GPT 4-Vision model that examines an image uploaded by the user and provide color theory feedback.
 import base64
 from langchain.chat_models import ChatOpenAI

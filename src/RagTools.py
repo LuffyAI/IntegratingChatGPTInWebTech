@@ -1,6 +1,3 @@
-# Author: Larnell Moore
-# Creation Date: December 26, 2023
-# Date Modified: Jan 14, 2024
 # Purpose: This file contains the implementation of each the tools the RagAgent can invoke. Moreover, it also contains
 # the implementation of helper functions associated with file and vector database management.
 from langchain.embeddings import OpenAIEmbeddings

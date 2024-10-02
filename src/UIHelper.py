@@ -1,6 +1,4 @@
-# Author: Larnell Moore and Venkata Alekhya Kusam
-# Creation Date: December 26, 2023
-# Date Modified: Jan 14, 2024
+
 # This file consist of functions that manipulate the Chainlit UI elements and prepare them for usage with other parts of the code.
 from RagTools import setFileUpload
 

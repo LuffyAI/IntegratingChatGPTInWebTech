@@ -1,6 +1,3 @@
-# Author: Larnell Moore
-# Creation Date: December 26, 2023
-# Date Modified: Jan 14, 2024
 # Purpose: This file defines the RAGAgent class, which acts as the primary Large Language Model (LLM) agent in this project. 
 # The RAGAgent class is responsible for understanding the user's request and choosing the appropriate functionality to 
 # to gather external knowledge, enhancing the quality of its answers. It retrieves additional context from vector databases and/or LangChain tools.

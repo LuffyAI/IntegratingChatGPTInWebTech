@@ -1,6 +1,3 @@
-# Author: Larnell Moore
-# Creation Date: December 26, 2023
-# Date Modified: Jan 14, 2024
 # Purpose: This file keeps track of the previous script & image uploaded by the user, specifically its name, extension, and contents.
 class FileUpload():
     def __init__(self):

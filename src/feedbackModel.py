@@ -1,6 +1,3 @@
-# Author: Larnell Moore
-# Creation Date: December 26, 2023
-# Date Modified: Jan 12, 2024
 # Purpose: This file communicates with a GPT 3.5-Turbo model finetuned on TA feedback from the Web Technology course.
 import openai
 from langchain.chat_models import ChatOpenAI
